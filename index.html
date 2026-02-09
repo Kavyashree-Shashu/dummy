@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Friendship 💛</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffe6ef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    .card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 360px;
+    }
+    button {
+      padding: 12px 20px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .open, .yes {
+      background: #ff4d6d;
+      color: #fff;
+    }
+    .no {
+      background: #ddd;
+      position: relative;
+    }
+    .hidden {
+      display: none;
+    }
+    .friend-photo {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 12px;
+    }
+    .msg {
+      margin-top: 12px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    video {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" id="pageOne">
+  <h3>📧 A Small Surprise 💛</h3>
+  <p><strong>From:</strong> Your Best Friend 😊</p>
+  <p>I made something special just for you.</p>
+  <button class="open" onclick="openCard()">Open 💌</button>
+  <p class="msg">Because true friendship always matters ✨</p>
+</div>
+
+<div class="card hidden" id="pageTwo">
+  <h2>Spandana,<br>will you always be my best friend? 💛</h2>
+
+  <img src="friendship.jpg" alt="Best Friendship" class="friend-photo">
+
+  <p class="msg">
+    A best friend is someone who understands your silence,
+    laughs with you in happiness, and stands beside you in every moment.
+    Forever grateful for this friendship 💛
+  </p>
+
+  <button class="yes" onclick="showVideo()">YES</button>
+  <button class="no" id="noBtn">NO</button>
+
+  <video id="video" controls>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <p class="msg" id="finalMsg"></p>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const music = document.getElementById("music");
+
+  function openCard() {
+    document.getElementById("pageOne").classList.add("hidden");
+    document.getElementById("pageTwo").classList.remove("hidden");
+  }
+
+  function moveNoButton() {
+    const x = Math.random() * 120 - 60;
+    const y = Math.random() * 120 - 60;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  noBtn.addEventListener("mouseover", moveNoButton);
+  noBtn.addEventListener("click", moveNoButton);
+
+  function showVideo() {
+    document.querySelector(".yes").style.display = "none";
+    noBtn.style.display = "none";
+    document.getElementById("video").style.display = "block";
+    document.getElementById("video").play();
+    music.play();
+    document.getElementById("finalMsg").innerText =
+      "Best friends forever 💛 This bond will never change.";
+  }
+</script>
+
+</body>
+</html>
